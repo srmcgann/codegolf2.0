@@ -1,0 +1,4 @@
+<?
+  require("functions.php");
+  drawMenu();
+?>
