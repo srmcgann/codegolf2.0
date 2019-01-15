@@ -57,6 +57,7 @@ for(i=0; i<sd; i++){
 						i.msRequestFullscreen();
 					}
 				});
+                                startStopApplets();
 			</script>
 			<div class="code-input"><span class="function-wrap">function u(t){</span><input id="webglCheckbox<?=$id?>" style="margin-left:5%;float:left;" type="checkbox"></input><span style="float:left;margin-left:5px;font-size:.7em;" id="webglCheckboxLabel<?=$id?>">webgl</span>
 				<a href="javascript:deleteApplet(<?=$id?>)" id="deleteButton<?=$id?>" style="color:red;font-size:.8em;float:right;display:none;margin-top:-30px">Delete Applet</a>

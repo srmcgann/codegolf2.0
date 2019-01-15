@@ -42,7 +42,13 @@ export default {
       this.stats = text
     })
     let filter = window.location.pathname.split('/')[1]
-    fetch('drawMenu.php?params=' + filter).then(res => res.text()).then(text => {
+    let key = ''
+    let email = ''
+    if ( getUrlVars()['k'] ) {
+      key = getUrlVars()['k'];
+      email = getUrlVars()['email']
+    }
+    fetch('drawMenu.php?params=' + filter + '&k=' + key + '&email=' + email).then(res => res.text()).then(text => {
       this.menuHTML = text
       if(text.indexOf('preferencesScreen') !== -1) this.loggedIn.val = true;
       this.runScripts(text)

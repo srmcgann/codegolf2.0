@@ -12,7 +12,7 @@
                   </div>
 		</div>
                 <script>
-                  document.getElementsByClassName('NewAppletButtonGraphic')[0].src = window.getComputedStyle(document.body).backgroundImage.split('"')[1]
+                  document.getElementsByClassName('NewAppletButtonGraphic')[0].src = '/plus.png'
                 </script>
 		<?		
 	}
@@ -88,7 +88,7 @@
                   </div>
                 </div>
                 <script>
-                  let oldParent = document.getElementById('config-container');
+                  oldParent = document.getElementById('config-container');
                   while (oldParent.childNodes.length > 0) {
                       document.body.appendChild(oldParent.childNodes[0]);
                   }
@@ -104,13 +104,23 @@
 	function drawConfirmScreen($k,$email){
 		require("logout.php");
 		?>
+                <div id="emailConfContainer">
 		<div id="emailConfirmScreen">
 			<div class="inputDiv">
-				<script>confirmEmail("<?=$k?>","<?=$email?>")</script>
+				<script>
+                                  confirmEmail("<?=$k?>","<?=$email?>")
+                                </script>
 				<div id="confirmResult"></div>
 			</div>
 		</div>
-		<script>$("#emailConfirmScreen").show()</script>
+                </div>
+		<script>
+                  $("#emailConfirmScreen").show()
+                  oldParent = document.getElementById('emailConfContainer');
+                  while (oldParent.childNodes.length > 0) {
+                      document.body.appendChild(oldParent.childNodes[0]);
+                  }
+                </script>
 		<?
 	}
 		
@@ -174,7 +184,7 @@
                 </div>
 		<script>bindEnterKey()</script>
                 <script>
-                  let oldParent = document.getElementById('config-container');
+                  oldParent = document.getElementById('config-container');
                   while (oldParent.childNodes.length > 0) {
                       document.body.appendChild(oldParent.childNodes[0]);
                   }
@@ -194,7 +204,8 @@
 	
 	function drawEmailVerification($email){
 		?>
-		<div id="emailVerificationScreen">
+                <div id="emailver-container">
+  		<div id="emailVerificationScreen">
 			<div class="inputDiv">
 				<center>
 					You must click the link that was sent to<br><span class="highlighted"><?=$email?></span><br><br>
@@ -209,7 +220,14 @@
 				</center>
 			</div>
 		</div>
-		<script>$("#emailVerificationScreen").show();</script>
+                </div>
+		<script>
+                  $("#emailVerificationScreen").show();
+                  oldParent = document.getElementById('emailver-container');
+                  while (oldParent.childNodes.length > 0) {
+                      document.body.appendChild(oldParent.childNodes[0]);
+                  }
+                </script>
 		<?
 	}
 	
@@ -265,7 +283,7 @@
 		?>
 		<div class="navMenu"></div>
 		<?
-		if(isset($_GET['k']) && isset($_GET['email'])){
+		if(isset($_GET['k']) && $_GET['k'] !== '' && isset($_GET['email'])){
 			$k=str_replace("'","",str_replace(";","",str_replace('"','',str_replace("<","",str_replace("%22","",$_GET['k'])))));
 			$email=str_replace("'","",str_replace(";","",str_replace('"','',str_replace("<","",str_replace("%22","",$_GET['email'])))));
 			drawConfirmScreen($k,$email);

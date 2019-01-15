@@ -1,6 +1,7 @@
 <?
 	require("db.php");
 ?>
+var oldParent;
 
 function mobileCheck() {
  
@@ -31,6 +32,14 @@ function postComment(id,name){
 function isEmailAddress(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+}
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
 }
 
 function Login(){
@@ -377,6 +386,7 @@ function confirmEmail(k,email){
 	
 	$.post( "/confirm.php", {k:k, email:email}, function( data ) {
 		if(data){
+                        console.log(data);
 			$("#confirmResult").css("color","#0f0");
 			$("#confirmResult").html("Email confirmed!<br><br><button onclick='Login()'>Log In</button>");
 		}else{
