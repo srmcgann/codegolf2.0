@@ -430,7 +430,7 @@
 					$row=mysqli_fetch_assoc($res2);
 					$name=$row["name"];
 					?>
-					<a class="commentUserName" href="/<?=$name?>"><?=$name?></a>:<span> <?=str_replace("<","&lt;",$comment)?></span><br>
+					<a class="commentUserName" href="/<?=$name?>"><?=$name?></a>:<span> <?=htmlspecialchars($comment, ENT_QUOTES, 'utf8')?></span><br>
 					<?
 				}
 			}else{
