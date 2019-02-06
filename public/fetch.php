@@ -2,7 +2,7 @@
 	require("functions.php");
   // $_POST = json_decode(file_get_contents('php://input'), true);
 	if(isset($_POST['scroll'])){
-		$postsPerScroll=3;
+		$postsPerScroll=6;
 		if(isset($_POST['u']) && $_POST['u']){
 			$user=mysqli_real_escape_string($link,$_POST['u']);
 			$sql="SELECT * FROM users WHERE name LIKE \"$user\"";

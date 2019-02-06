@@ -1,6 +1,6 @@
 <?
 	$db_user="user";
-	$db_pass="password";
+	$db_pass="";
 	$db_host="localhost";
 	$db="codegolf";
 	$baseDomain="CodeGolf.tk";
