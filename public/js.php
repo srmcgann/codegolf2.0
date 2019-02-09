@@ -386,7 +386,6 @@ function confirmEmail(k,email){
 	
 	$.post( "/confirm.php", {k:k, email:email}, function( data ) {
 		if(data){
-                        console.log(data);
 			$("#confirmResult").css("color","#0f0");
 			$("#confirmResult").html("Email confirmed!<br><br><button onclick='Login()'>Log In</button>");
 		}else{
@@ -566,7 +565,6 @@ function deleteApplet(id){
 }
 
 function saveApplet(id,formerUserID,formerAppletID){
-        console.log('herp')
 	$.post('/saveApplet.php',{ code:eval("editor"+id).getValue(), formerUserID: formerUserID, formerAppletID:formerAppletID, webgl:$("#webglCheckbox"+id).is(':checked') },
 	function(data) {
 		if(data=="fail"){
