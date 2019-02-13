@@ -65,6 +65,9 @@
 	                $sql="UPDATE applets SET rating=$rating, votes=$votes WHERE id=$id";
 	                $link->query($sql);
 			echo $name;
+
+                        // generate thumbnail for social media
+                        shell_exec('node thumb.js ' . $id);
 		}
 
 	}else{

@@ -1,3 +1,4 @@
+<? require('db.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,9 +15,23 @@
     <script src="/js/linkify/linkify-jquery.min.js"></script>
     <script src="/js.php"></script>
     <script src="/js/cropit/dist/jquery.cropit.js"></script>
-    <script>
-        mobile=$(window).width()<$(window).height()
+    <script type='text/javascript' data-cfasync='false'>
+      mobile=$(window).width()<$(window).height()
     </script>
+      <?
+        $params = explode('/',  $_GET['params']);
+        if ($params[0] === 'a') {
+          ?>
+          <meta property="og:image" content="https://<?=$baseDomain?>/thumbs/<?=$params[1]?>.png" />
+          <meta property="og:title" content="demo #<?=$params[1]?>" />
+          <?
+        } else {
+          ?>
+          <meta property="og:image" content="https://<?=$baseDomain?>/codegolf_logo.png" />
+          <meta property="og:title" content="CODEGOLF.TK, where the demoscene lives on!" />
+          <?
+        }
+      ?>
   </head>
   <body>
     <noscript>
